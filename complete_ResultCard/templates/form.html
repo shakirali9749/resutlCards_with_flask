@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+.mainContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+.container2{
+  font-weight: bold;
+}
+
+@media screen and (min-width: 1px){
+  .container1{
+    width: 13%;
+  }
+  .container2{
+    width: 70%;
+}
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+  <img src="th.jpeg" alt="Girl in a jacket" width="500" height="600">
+  <form action="/" method="post">
+    <input type="textbox" name="rollnumber" />
+
+    <button type="submit">Submit</button>
+  </form>
+
+
+  {% if person %}
+    <div class="mainContainer">
+      <div class="container1">
+          <p>Roll#:</p>
+          <p>Name:</p>
+          <p>Father Name:</p>
+          <p>Reg#:</p>
+          <p>Date of Birth:</p>
+
+      </div>
+
+      <div class="container2">
+          <p>{{person.roll_number}}</p>
+          <p>{{person.name}}</p>
+          <p>{{person.father_name}}</p>
+          <p>{{person.registration_number}}</p>
+          <p>{{person.date_of_birth}}</p>
+      </div>
+    </div>
+    <table>
+
+    <tr>
+      <th>Subject</th>
+      <th>Total-Marks</th>
+      <th>Obtained Marks</th>
+    </tr>
+    {% for p in person.subjects_detail %}
+    
+      <tr>
+        <td> {{p[0]}} </td>
+        <td> {{p[1]}} </td>
+        <td> {{p[2]}} </td>
+      </tr>
+
+    {% endfor %}
+
+  </table>
+
+  {% endif %}
+
+</body>
+</html>
